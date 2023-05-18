@@ -1,0 +1,21 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: graphiql
+spec:
+  http:
+  - backends:
+    - serviceName: graphiql
+      servicePort: 80
+    match:
+      hosts:
+      - api.holaplex.com
+      methods:
+      - GET
+      paths:
+      - /
+    name: graphiql
+    plugins:
+    - enable: true
+      name: request-id
+    websocket: false
