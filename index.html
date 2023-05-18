@@ -9,6 +9,8 @@
 <html lang="en">
   <head>
     <title>Hub API Playground</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico" />
+    <meta charset="UTF-8" />
     <style>
       body {
         height: 100%;
@@ -30,12 +32,12 @@
       include them directly in your favored resource bundler.
     -->
     <script
-      src="https://unpkg.com/react@17/umd/react.development.js"
+      src="/static/js/react.development.js"
       integrity="sha512-Vf2xGDzpqUOEIKO+X2rgTLWPY+65++WPwCHkX2nFMu9IcstumPsf/uKKRd5prX3wOu8Q0GBylRpsDB26R6ExOg=="
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      src="/static/js/react-dom.development.js"
       integrity="sha512-Wr9OKCTtq1anK0hq5bY3X/AvDI5EflDSAh0mE9gma+4hl+kXdTJPKZ3TwLMBcrgUeoY0s3dq9JjhCQc7vddtFg=="
       crossorigin="anonymous"
     ></script>
@@ -45,24 +47,28 @@
       copy them directly into your environment, or perhaps include them in your
       favored resource bundler.
      -->
-    <link rel="stylesheet" href="https://unpkg.com/graphiql/graphiql.min.css" />
+    <link rel="stylesheet" href="/static/css/graphiql.min.css" />
   </head>
 
   <body>
     <div id="graphiql">Loading...</div>
     <script
-      src="https://unpkg.com/graphiql/graphiql.min.js"
+      src="/static/js/graphiql.min.js"
       type="application/javascript"
     ></script>
     <script>
       ReactDOM.render(
         React.createElement(GraphiQL, {
           fetcher: GraphiQL.createFetcher({
-            url: 'https://api.holaplex.com/graphql',
+            url: "https://api.holaplex.com/graphql",
           }),
+          defaultVariableEditorOpen: true,
+          headerEditorEnabled: true,
+          shouldPersistHeaders: true,
+          defaultHeaders: '{ "Authorization": "Your_API_Token" }',
           defaultEditorToolsVisibility: true,
         }),
-        document.getElementById('graphiql'),
+        document.getElementById("graphiql")
       );
     </script>
   </body>
